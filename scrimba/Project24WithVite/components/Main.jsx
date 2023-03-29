@@ -1,9 +1,10 @@
 import React from "react";
+import './Main.css'
 
 function Main() {
   return (
-    <main>
-      <h1>
+    <main className="main-body">
+      <h1 className="header">
         Fun facts about React
       </h1>
       <ul className="list">
