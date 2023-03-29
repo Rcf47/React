@@ -1,6 +1,9 @@
 .main-body {
   color: #ffffff;
   padding: 57px 27px;
+  background-image: url('../public/reactjs-icon 2.png');
+  background-repeat: no-repeat;
+  background-position: right top 75%;
 }
 
 .header {
