@@ -1,9 +1,9 @@
-
-
+import './Navbar.css'
+import '../public/airbnb-logo.png'
 function Navbar() {
   return (
-    <nav>
-      <h1>Hello from nav</h1>
+    <nav className='airbnb-nav'>
+      <img src='../public/airbnb-logo.png' className='airbnb-logo' />
     </nav>
   )
 }
