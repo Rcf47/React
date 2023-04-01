@@ -1,4 +1,5 @@
-import "./Card.css";
+//import "./Card.css";
+import "./CardFromScrimba.css"
 
 function Card(props) {
   let textBadge
@@ -8,17 +9,17 @@ function Card(props) {
     textBadge = "Online"
   }
   return (
-    <div className="card__body">
-      {textBadge && <div className="card__label" >{textBadge}</div>}
-      <img src={` ../src/assets/${props.coverImg}`} className="card__photo" />
-      <div className="card__rating">
-        <img src="../src/assets/Star.png" className="card__star" />
+    <div className="card">
+      {textBadge && <div className="card--badge" >{textBadge}</div>}
+      <img src={` ../src/assets/${props.coverImg}`} className="card--image" />
+      <div className="card--stats">
+        <img src="../src/assets/Star.png" className="card--star" />
         <span>{props.stats.rating}</span>
-        <span>({props.stats.reviewCount}) • </span>
-        <span>{props.location}</span>
+        <span className="gray">({props.stats.reviewCount}) • </span>
+        <span className="gray">{props.location}</span>
       </div>
-      <p className="card__text">{props.title}</p>
-      <p className="card__price">From ${props.price} / <span>person</span></p>
+      <p className="card--title">{props.title}</p>
+      <p className="card--price"><span className="bold">From ${props.price}</span> / <span>person</span></p>
     </div>
   );
 }

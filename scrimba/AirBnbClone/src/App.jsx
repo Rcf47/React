@@ -1,4 +1,5 @@
 import "./App.css";
+import "./index.css"
 import Navbar from "../components/Navbar";
 import Main from "../components/Main";
 import Card from "../components/Card";
@@ -15,7 +16,7 @@ function App() {
     <>
       <Navbar />
       <Main />
-      <section className="card__list">
+      <section className="card-list" >
         {cardData}
       </section>
     </>

@@ -6,3 +6,22 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
 }
+
+section {
+    padding: 20px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.gray {
+    color: #918E9B;
+}
+
+.cards-list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: auto;
+}
