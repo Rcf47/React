@@ -1,0 +1,65 @@
+:root {
+  --card-color: #222222;
+  --card-stat-color: #918e98
+}
+.card__body {
+  padding: 20px;
+  width: 175px;
+  color: var(--card-color);
+}
+
+.card__label {
+  display: inline-block;
+  font-size: 11px;
+  text-align: center;
+  width: 60px;
+  height: 20px;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 2px;
+
+  position: absolute;
+  width: 61px;
+  height: 20px;
+  left: 43px;
+  top: 527px;
+}
+
+.card__photo {
+  width: 100%;
+  margin: 0;
+}
+
+.card__description {
+  margin-top: 9px;
+}
+
+.card__star {
+  width: 14px;
+  height: 14px;
+}
+
+
+.card__rating {
+  display: flex;
+  align-items: center;
+}
+
+.card__rating > span {
+  font-size: 14px;
+  color: var(--card-stat-color);
+}
+
+.card__text {
+  font-size: 14px;
+}
+
+.card__price {
+font-weight: 600;
+font-size: 12px;
+line-height: 110%;
+}
+
+.card__price > span {
+font-weight: 300;
+}
