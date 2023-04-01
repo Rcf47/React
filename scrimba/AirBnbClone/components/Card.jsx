@@ -9,7 +9,7 @@ function Card(props) {
         <div className="card__rating">
           <img src="../public/Star.png" className="card__star" />
           <span>{props.rating}</span>
-          <span>{props.reviewCount} • </span>
+          <span>({props.reviewCount}) • </span>
           <span>{props.country}</span>
         </div>
         <p className="card__text">{props.title}</p>
