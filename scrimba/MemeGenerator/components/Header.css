@@ -1,0 +1,42 @@
+.nav--menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 65px;
+  background: linear-gradient(90deg, #672280 1.18%, #a626d3 100%);
+  padding: 20px;
+}
+
+.nav--logo-wrapper {
+  display: flex;
+}
+.nav--header {
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 24px;
+  letter-spacing: -0.1em;
+
+  color: #ffffff;
+  margin-left: 6px;
+}
+
+.nav--logo {
+  height: 31px;
+  width: 26px;
+}
+
+.nav--text {
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 15px;
+text-align: right;
+
+color: #FFFFFF;
+
+
+}
