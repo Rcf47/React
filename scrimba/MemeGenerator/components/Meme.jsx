@@ -1,12 +1,22 @@
 import "./Meme.css";
 import memesData from "../src/memesData.js"
+import { useState } from "react";
 
 function Meme() {
-  function getRandomInt() {
-    return Math.floor(Math.random() * (memesData.data.memes.length - 1) + 1)
-  }
-  function addMemeOnClick() {
-    console.log(memesData.data.memes[getRandomInt()].url)
+  const [meme, setMemeImage] = useState({
+    topText: "",
+    bottomText: "",
+    randomImage: "http://i.imgflip.com/1bij.jpg"
+  })
+
+  function getRandomMeme() {
+    const randomInt = Math.floor(Math.random() * memesData.data.memes.length)
+    const allMemeImages = memesData.data.memes
+    setMemeImage(prevMeme => ({
+      ...prevMeme,
+      randomImage: allMemeImages[randomInt].url
+    }))
+
   }
 
   return (
@@ -18,8 +28,9 @@ function Meme() {
           placeholder="and take my money"
           className="form--input"
         />
-        <button className="form--button" onClick={addMemeOnClick}>Get a new meme image 🖼</button>
+        <button className="form--button" onClick={getRandomMeme}>Get a new meme image 🖼</button>
       </div>
+      <img src={meme.randomImage} className="meme--image" />
     </main>
   );
 }
