@@ -2,11 +2,16 @@ import './App.css'
 import { useState } from "react"
 
 function App() {
-  const [firstName, setFirstName] = useState("")
+  const [formData, setFormData] = useState({ firstName: "", lastName: "" })
 
-  console.log(firstName)
+  console.log(formData)
   function handleChange(event) {
-    setFirstName(event.target.value)
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        [event.target.name]: event.target.value
+      }
+    })
   }
   /**
       * Challenge: Track the applicant's last name as well
@@ -17,11 +22,13 @@ function App() {
         type="text"
         placeholder="First Name"
         onChange={handleChange}
+        name="firstName"
       />
       <input
         type="text"
         placeholder="Last Name"
         onChange={handleChange}
+        name="lastName"
       />
     </form>
   )
