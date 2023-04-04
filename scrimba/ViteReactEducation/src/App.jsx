@@ -4,10 +4,13 @@ import { useState } from "react"
 function App() {
   const [firstName, setFirstName] = useState("")
 
+  console.log(firstName)
   function handleChange(event) {
-    console.log(event)
+    setFirstName(event.target.value)
   }
-
+  /**
+          * Challenge: update the firstName state on every keystroke
+          */
   return (
     <form>
       <input
