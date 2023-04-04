@@ -9,12 +9,14 @@ function Meme() {
     randomImage: "http://i.imgflip.com/1bij.jpg"
   })
 
+  const [allMemeImages, setAllMemeImages] = useState(memesData)
+
   function getRandomMeme() {
     const randomInt = Math.floor(Math.random() * memesData.data.memes.length)
-    const allMemeImages = memesData.data.memes
+    const memesArray = allMemeImages.data.memes
     setMemeImage(prevMeme => ({
       ...prevMeme,
-      randomImage: allMemeImages[randomInt].url
+      randomImage: memesArray[randomInt].url
     }))
 
   }
