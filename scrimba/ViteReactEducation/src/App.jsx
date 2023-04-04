@@ -9,13 +9,18 @@ function App() {
     setFirstName(event.target.value)
   }
   /**
-          * Challenge: update the firstName state on every keystroke
-          */
+      * Challenge: Track the applicant's last name as well
+      */
   return (
     <form>
       <input
         type="text"
         placeholder="First Name"
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        placeholder="Last Name"
         onChange={handleChange}
       />
     </form>
