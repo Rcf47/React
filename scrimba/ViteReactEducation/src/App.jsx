@@ -1,21 +1,27 @@
-import './App.css'
-import { useState } from "react"
+import "./App.css";
+import { useState } from "react";
 
 function App() {
-  const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "" })
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    textarea: "",
+  });
 
-  console.log(formData)
+  console.log(formData);
   function handleChange(event) {
-    setFormData(prevFormData => {
+    setFormData((prevFormData) => {
       return {
         ...prevFormData,
-        [event.target.name]: event.target.value
-      }
-    })
+        [event.target.name]: event.target.value,
+      };
+    });
   }
-/**
-     * Challenge: add an email field/state to the form
-     */  return (
+  /**
+   * Challenge: Add a textarea for "comments" to the form
+   * Make sure to update state when it changes.
+   */ return (
     <form>
       <input
         type="text"
@@ -38,8 +44,14 @@ function App() {
         name="email"
         value={formData.email}
       />
+      <textarea
+        value={formData.textarea}
+        name="textarea"
+        onChange={handleChange}
+        placeholder="comment"
+      />
     </form>
-  )
+  );
 }
 
-export default App
+export default App;
