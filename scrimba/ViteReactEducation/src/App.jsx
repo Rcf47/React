@@ -2,7 +2,7 @@ import './App.css'
 import { useState } from "react"
 
 function App() {
-  const [formData, setFormData] = useState({ firstName: "", lastName: "" })
+  const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "" })
 
   console.log(formData)
   function handleChange(event) {
@@ -13,10 +13,9 @@ function App() {
       }
     })
   }
-  /**
-      * Challenge: Track the applicant's last name as well
-      */
-  return (
+/**
+     * Challenge: add an email field/state to the form
+     */  return (
     <form>
       <input
         type="text"
@@ -29,6 +28,12 @@ function App() {
         placeholder="Last Name"
         onChange={handleChange}
         name="lastName"
+      />
+      <input
+        type="email"
+        placeholder="email"
+        onChange={handleChange}
+        name="email"
       />
     </form>
   )
