@@ -7,14 +7,16 @@ function App() {
     lastName: "",
     email: "",
     textarea: "",
+    isFriendly: true,
   });
 
   console.log(formData);
   function handleChange(event) {
+    const { name, value, type, checked } = event.target;
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
-        [event.target.name]: event.target.value,
+        [name]: type === "checkbox" ? checked : value,
       };
     });
   }
@@ -50,6 +52,14 @@ function App() {
         onChange={handleChange}
         placeholder="comment"
       />
+      <input
+        type="checkbox"
+        id="isFriendly"
+        onChange={handleChange}
+        name="isFriendly"
+        checked={formData.isFriendly}
+      />
+      <label htmlFor="isFriendly">Are you friendly?</label>
     </form>
   );
 }
