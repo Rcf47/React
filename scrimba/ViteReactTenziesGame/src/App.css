@@ -1,0 +1,7 @@
+
+.board {
+  max-width: 800px;
+  height: 380px;
+  border-radius: 10px;
+ background-color: #F5F5F5; 
+}
