@@ -15,7 +15,7 @@ function App() {
       objInt[i] = {
         id: nanoid(),
         value: randomInt(),
-        isHeld: true,
+        isHeld: false,
       };
     }
     return objInt;
@@ -24,12 +24,12 @@ function App() {
   function handleClick() {
     setArrayDie(allowNewDice(10));
   }
-  function handleActive(event) {
-    setArrayDie(prevArrayDie => [...prevArrayDie, event.target.isHeld = !event.target.isHeld])
+  function holdDice(id) {
+    console.log(id)
   }
 
   let dieArray = arrayDie.map((item) => (
-    <Die key={item.id} value={item.value} isHeld={item.isHeld} />
+    <Die key={item.id} value={item.value} isHeld={item.isHeld} holdDice={() => holdDice(item.id)} />
   ));
 
   return (
