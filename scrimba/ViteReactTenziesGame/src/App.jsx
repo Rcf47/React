@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import Die from "../components/Die";
+import { nanoid } from 'nanoid'
 
 function App() {
   const [arrayDie, setArrayDie] = useState(allowNewDice(10));
@@ -12,6 +13,7 @@ function App() {
     let objInt = [];
     for (let i = 0; i < numberItem; i++) {
       objInt[i] = {
+        id: nanoid(),
         value: randomInt(),
         isHeld: false,
       };
@@ -23,7 +25,7 @@ function App() {
     setArrayDie(allowNewDice(10));
   }
 
-  let dieArray = arrayDie.map((item) => <Die value={item.value} />);
+  let dieArray = arrayDie.map((item) => <Die key={item.id} value={item.value} />);
 
   return (
     <main className="board">
