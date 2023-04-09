@@ -2,7 +2,7 @@
   max-width: 800px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   height: 380px;
   border-radius: 10px;
@@ -13,4 +13,26 @@
   display: grid;
   grid-template: auto auto / repeat(5, 1fr);
   grid-gap: 20px;
+}
+
+.Roll-button {
+  width: 95px;
+  height: 35px;
+  color: white;
+  background-color: #5035ff;
+  border-radius: 5px;
+  margin-top: 25px;
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.Roll-button:active {
+  box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
