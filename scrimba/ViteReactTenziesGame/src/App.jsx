@@ -6,6 +6,11 @@ import { nanoid } from "nanoid";
 function App() {
   const [arrayDie, setArrayDie] = useState(generateDiceArray(10));
   const [winCondition, setWinCondition] = useState(false);
+
+  useEffect(() => {
+    console.log('Dice state effect changes')
+  }, [arrayDie])
+
   function randomInt() {
     return Math.ceil(Math.random() * 6);
   }
