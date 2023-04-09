@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import Die from "../components/Die";
-import { nanoid } from 'nanoid'
+import { nanoid } from "nanoid";
 
 function App() {
   const [arrayDie, setArrayDie] = useState(allowNewDice(10));
@@ -15,7 +15,7 @@ function App() {
       objInt[i] = {
         id: nanoid(),
         value: randomInt(),
-        isHeld: false,
+        isHeld: true,
       };
     }
     return objInt;
@@ -24,8 +24,13 @@ function App() {
   function handleClick() {
     setArrayDie(allowNewDice(10));
   }
+  function handleActive(event) {
+    setArrayDie(prevArrayDie => [...prevArrayDie, event.target.isHeld = !event.target.isHeld])
+  }
 
-  let dieArray = arrayDie.map((item) => <Die key={item.id} value={item.value} />);
+  let dieArray = arrayDie.map((item) => (
+    <Die key={item.id} value={item.value} active={item.isHeld} />
+  ));
 
   return (
     <main className="board">

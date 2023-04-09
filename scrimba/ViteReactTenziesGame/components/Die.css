@@ -12,3 +12,7 @@
 .die-num {
   font-size: 2rem;
 }
+
+.active {
+  background-color: #59E391;
+}
