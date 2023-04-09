@@ -29,7 +29,7 @@ function App() {
   }
 
   let dieArray = arrayDie.map((item) => (
-    <Die key={item.id} value={item.value} active={item.isHeld} />
+    <Die key={item.id} value={item.value} isHeld={item.isHeld} />
   ));
 
   return (
