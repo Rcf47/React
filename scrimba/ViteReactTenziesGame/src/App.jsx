@@ -2,6 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import Die from "../components/Die";
 import { nanoid } from "nanoid";
+import Confetti from "react-confetti"
 
 function App() {
   const [arrayDie, setArrayDie] = useState(generateDiceArray(10));
@@ -68,8 +69,9 @@ function App() {
       </p>
       <div className="wrapper">{dieArray}</div>
       <button onClick={handleClick} className="Roll-button">
-        Roll
+        {winCondition ? "New game" : "Roll"}
       </button>
+      {winCondition && <Confetti />}
     </main>
   );
 }
