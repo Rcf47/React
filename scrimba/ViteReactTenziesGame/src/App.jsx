@@ -12,7 +12,7 @@ function App() {
     const allValue = arrayDie.every((die) => die.value === arrayDie[0].value);
     if (allHeld && allValue) {
       setWinCondition(true);
-      console.log("you won");
+      console.log("you are great");
     }
   }, [arrayDie]);
 
