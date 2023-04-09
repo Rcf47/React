@@ -13,7 +13,6 @@ function App() {
     const allValue = arrayDie.every((die) => die.value === arrayDie[0].value);
     if (allHeld && allValue) {
       setWinCondition(true);
-      console.log("you are great");
     }
   }, [arrayDie]);
 
@@ -42,6 +41,10 @@ function App() {
         item.isHeld === true ? item : getNewDice()
       )
     );
+    if (winCondition) {
+      setWinCondition(false)
+      setArrayDie(generateDiceArray(10))
+    }
   }
   function holdDice(id) {
     setArrayDie((previousDiceArray) =>
