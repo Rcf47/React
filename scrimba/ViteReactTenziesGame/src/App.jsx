@@ -1,10 +1,11 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Die from "../components/Die";
 import { nanoid } from "nanoid";
 
 function App() {
   const [arrayDie, setArrayDie] = useState(generateDiceArray(10));
+  const [winCondition, setWinCondition] = useState(false);
   function randomInt() {
     return Math.ceil(Math.random() * 6);
   }
