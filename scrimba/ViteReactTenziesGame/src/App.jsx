@@ -4,28 +4,31 @@ import Die from "../components/Die";
 import { nanoid } from "nanoid";
 
 function App() {
-  const [arrayDie, setArrayDie] = useState(allowNewDice(10));
+  const [arrayDie, setArrayDie] = useState(generateDiceArray(10));
   function randomInt() {
     return Math.ceil(Math.random() * 6);
   }
 
-  function allowNewDice(numberItem) {
+  function getNewDice() {
+    return {
+      id: nanoid(),
+      value: randomInt(),
+      isHeld: false,
+    }
+  }
+  function generateDiceArray(numberItem) {
     let objInt = [];
     for (let i = 0; i < numberItem; i++) {
-      objInt[i] = {
-        id: nanoid(),
-        value: randomInt(),
-        isHeld: false,
-      };
+      objInt.push(getNewDice())
     }
     return objInt;
   }
 
   function handleClick() {
-    setArrayDie(allowNewDice(10));
+    setArrayDie(previousDiceArray => previousDiceArray.map(item => item.isHeld === true ? item : getNewDice()));
   }
   function holdDice(id) {
-    console.log(id)
+    setArrayDie(previousDiceArray => previousDiceArray.map(item => item.id === id ? { ...item, isHeld: !item.isHeld } : item))
   }
 
   let dieArray = arrayDie.map((item) => (
