@@ -76,7 +76,7 @@ function App() {
         current value between rolls.
       </p>
       <div className="roll-counter">{`number of moves: ${rollNumber}`}</div>
-      <Timer />
+      <Timer winCondition={winCondition} />
       <div className="wrapper">{dieArray}</div>
       <button onClick={handleClick} className="Roll-button">
         {winCondition ? "New game" : "Roll"}
