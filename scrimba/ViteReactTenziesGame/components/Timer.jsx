@@ -13,47 +13,59 @@ function Timer(props) {
     const timeout = setTimeout(() => {
       if (isRunning) {
         setSeconds((prevSeconds) => (prevSeconds + 1) % 60);
-        setMinutes((prevMinutes) => (prevMinutes + (seconds === 59 ? 1 : 0)) % 60);
+        setMinutes(
+          (prevMinutes) => (prevMinutes + (seconds === 59 ? 1 : 0)) % 60
+        );
         setHours(
-          (prevHours) => (prevHours + (minutes === 59 && seconds === 59 ? 1 : 0)) % 24
+          (prevHours) =>
+            (prevHours + (minutes === 59 && seconds === 59 ? 1 : 0)) % 24
         );
       }
     }, 1000);
 
-    return () => clearTimeout(timeout)
+    return () => clearTimeout(timeout);
   }, [seconds, isRunning]);
 
   useEffect(() => {
     if (props.winCondition) {
-      const currentTime = `${hours}:${minutes}:${seconds}`
-      localStorage.setItem("bestTime", currentTime)
-      setBestTime(currentTime)
-      setShouldReset(true)
-      setIsRunning(false)
+      const currentTime = `${hours}:${minutes}:${seconds}`;
+      const storedBestTime = localStorage.getItem("bestTime");
+      if (!storedBestTime || currentTime < storedBestTime) {
+        localStorage.setItem("bestTime", currentTime);
+      }
+      setBestTime(currentTime);
+      setShouldReset(true);
+      setIsRunning(false);
     } else {
-      setIsRunning(true)
+      setIsRunning(true);
     }
-
-  }, [props.winCondition, seconds])
+  }, [props.winCondition, seconds]);
   useEffect(() => {
     const storedBestTime = localStorage.getItem("bestTime");
     const defaultBestTime = "00:00:00";
     const initialBestTime = bestTime || storedBestTime || defaultBestTime;
     setBestTime(initialBestTime);
+    localStorage.setItem("bestTime", initialBestTime);
   }, []);
   useEffect(() => {
     if (shouldReset) {
-      setSeconds(0)
-      setMinutes(0)
-      setHours(0)
-      setShouldReset(false)
+      setSeconds(0);
+      setMinutes(0);
+      setHours(0);
+      setShouldReset(false);
     }
-  }, [props.winCondition])
+  }, [props.winCondition]);
+  function resetStorage() {
+    setBestTime(0)
+    localStorage.clear
+  }
   return (
     <>
-      <div className="timer">{`timer: ${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes
+      <div className="timer">{`Timer: ${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes
         }:${seconds < 10 ? "0" + seconds : seconds}`}</div>
-      <div className="bestTime">{`Your best time is ${bestTime || localStorage.getItem("bestTime") || 0}`}</div>
+      <div className="bestTime">{`Your best time is ${bestTime || localStorage.getItem("bestTime") || 0
+        }`}</div>
+      <button onClick={resetStorage}>Reset best time</button>
     </>
   );
 }
