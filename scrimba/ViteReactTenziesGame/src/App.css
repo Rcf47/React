@@ -20,6 +20,9 @@
     margin-top: 0;
     text-align: center;
 }
+.roll-counter {
+  font-size: 20px;
+}
 .wrapper {
   display: grid;
   grid-template: auto auto / repeat(5, 1fr);

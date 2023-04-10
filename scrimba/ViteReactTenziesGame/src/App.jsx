@@ -7,6 +7,7 @@ import Confetti from "react-confetti"
 function App() {
   const [arrayDie, setArrayDie] = useState(generateDiceArray(10));
   const [winCondition, setWinCondition] = useState(false);
+  const [rollNumber, setRollNumber] = useState(0)
 
   useEffect(() => {
     const allHeld = arrayDie.every((die) => die.isHeld);
@@ -36,12 +37,15 @@ function App() {
   }
 
   function handleClick() {
+    setRollNumber(prevRollNumber => prevRollNumber + 1)
     setArrayDie((previousDiceArray) =>
       previousDiceArray.map((item) =>
         item.isHeld === true ? item : getNewDice()
       )
+
     );
     if (winCondition) {
+      setRollNumber(0)
       setWinCondition(false)
       setArrayDie(generateDiceArray(10))
     }
@@ -70,6 +74,7 @@ function App() {
         Roll until all dice are the same. Click each die to freeze it at its
         current value between rolls.
       </p>
+      <div className="roll-counter">{`number of moves: ${rollNumber}`}</div>
       <div className="wrapper">{dieArray}</div>
       <button onClick={handleClick} className="Roll-button">
         {winCondition ? "New game" : "Roll"}
