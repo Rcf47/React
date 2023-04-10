@@ -65,7 +65,7 @@ function Timer(props) {
         }:${seconds < 10 ? "0" + seconds : seconds}`}</div>
       <div className="bestTime">{`Your best time is ${bestTime || localStorage.getItem("bestTime") || 0
         }`}</div>
-      <button onClick={resetStorage}>Reset best time</button>
+      <button onClick={resetStorage} className="button reset-button">Reset best time</button>
     </>
   );
 }

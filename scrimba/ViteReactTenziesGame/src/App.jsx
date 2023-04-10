@@ -78,7 +78,7 @@ function App() {
       <div className="roll-counter">{`number of moves: ${rollNumber}`}</div>
       <Timer winCondition={winCondition} />
       <div className="wrapper">{dieArray}</div>
-      <button onClick={handleClick} className="Roll-button">
+      <button onClick={handleClick} className="button">
         {winCondition ? "New game" : "Roll"}
       </button>
       {winCondition && <Confetti />}
