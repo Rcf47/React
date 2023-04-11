@@ -57,7 +57,7 @@ function Timer(props) {
   }, [props.winCondition]);
   function resetStorage() {
     setBestTime(0)
-    localStorage.clear
+    localStorage.clear()
   }
   return (
     <>

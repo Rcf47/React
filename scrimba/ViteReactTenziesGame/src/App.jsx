@@ -75,7 +75,7 @@ function App() {
         Roll until all dice are the same. Click each die to freeze it at its
         current value between rolls.
       </p>
-      <div className="roll-counter">{`number of moves: ${rollNumber}`}</div>
+      <div className="roll-counter">{`Number of moves: ${rollNumber}`}</div>
       <Timer winCondition={winCondition} />
       <div className="wrapper">{dieArray}</div>
       <button onClick={handleClick} className="button">
