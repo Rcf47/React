@@ -30,7 +30,9 @@ function Timer(props) {
     if (props.winCondition) {
       const currentTime = `${hours}:${minutes}:${seconds}`;
       const storedBestTime = localStorage.getItem("bestTime");
-      if (!storedBestTime || currentTime < storedBestTime) {
+      const currentTimeArray = currentTime.split(":")
+      const storedBestTimeArray = storedBestTime && storedBestTime.split(":")
+      if (JSON.stringify(currentTimeArray) < JSON.stringify(storedBestTimeArray) || !storedBestTime) {
         localStorage.setItem("bestTime", currentTime);
       }
       setBestTime(currentTime);
@@ -63,8 +65,7 @@ function Timer(props) {
     <>
       <div className="timer">{`Timer: ${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes
         }:${seconds < 10 ? "0" + seconds : seconds}`}</div>
-      <div className="bestTime">{`Your best time is ${bestTime || localStorage.getItem("bestTime") || 0
-        }`}</div>
+      <div className="bestTime">{`Your best time is ${localStorage.getItem("bestTime") || "00:00:00"}`}</div>
       <button onClick={resetStorage} className="button reset-button">Reset best time</button>
     </>
   );
