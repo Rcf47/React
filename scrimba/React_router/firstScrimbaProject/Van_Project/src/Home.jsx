@@ -1,3 +1,4 @@
+import Footer from "./Footer"
 import Navbar from "./Navbar"
 
 function Home() {
@@ -5,6 +6,7 @@ function Home() {
     <>
       <Navbar />
       <h1>Hello my friend</h1>
+      <Footer />
     </>
   )
 }

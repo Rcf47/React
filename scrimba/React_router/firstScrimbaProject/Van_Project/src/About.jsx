@@ -1,3 +1,4 @@
+import Footer from "./Footer"
 import Navbar from "./Navbar"
 
 function About() {
@@ -5,6 +6,7 @@ function About() {
     <>
       <Navbar />
       <h1>This is all about</h1>
+      <Footer />
     </>
   )
 }
