@@ -1,31 +1,26 @@
-import { useEffect, useState } from "react"
-import { useParams, Link } from "react-router-dom"
+import { Link, Outlet, NavLink, useLoaderData, defer, Await } from "react-router-dom"
+import { getVan } from "../../api"
+import { requireAuth } from "../../utils"
+import { Suspense } from "react"
 
-function HostVansDetail() {
-  const { id } = useParams()
-  const [currentVan, setCurrentVan] = useState(null)
+export async function loader({ params, request }) {
+  await requireAuth(request)
+  return defer({ currentVan: getVan(params.id) })
+}
+export function HostVansDetail() {
+  const currentVanPromise = useLoaderData()
 
-  useEffect(() => {
-    fetch(`/api/host/vans/${id}`)
-      .then(res => res.json())
-      .then(data => setCurrentVan(data.vans))
-  }, [])
-
-  if (!currentVan) {
-    return <h1>Loading...</h1>
+  const activeStyles = {
+    fontWeight: "bold",
+    textDecoration: "underline",
+    color: "#161616"
   }
 
-  return (
-    <section>
-      <Link
-        to=".."
-        relative="path"
-        className="back-button"
-      >&larr; <span>Back to all vans</span></Link>
-
+  function renderHostVansDetail(currentVan) {
+    return (
       <div className="host-van-detail-layout-container">
         <div className="host-van-detail">
-          <img src={currentVan.imageUrl} />
+          <img src={currentVan.imageURL} />
           <div className="host-van-detail-info-text">
             <i
               className={`van-type van-type-${currentVan.type}`}
@@ -36,9 +31,30 @@ function HostVansDetail() {
             <h4>${currentVan.price}/day</h4>
           </div>
         </div>
+        <nav className="host-van-detail-nav">
+          <NavLink to="." end style={({ isActive }) => isActive ? activeStyles : null}>Details</NavLink>
+          <NavLink to="pricing" style={({ isActive }) => isActive ? activeStyles : null}>Pricing</NavLink>
+          <NavLink to="photos" style={({ isActive }) => isActive ? activeStyles : null}>Photos</NavLink>
+        </nav>
+        <Outlet context={{ currentVan: currentVan }} />
       </div>
+    )
+  }
+
+  return (
+    <section>
+      <Link
+        to=".."
+        relative="path"
+        className="back-button"
+      >&larr; <span>Back to all vans</span></Link>
+      <Suspense fallback={<h2>Loading van...</h2>} >
+        <Await resolve={currentVanPromise.currentVan}>
+          {renderHostVansDetail}
+        </Await>
+      </Suspense>
+
     </section>
   )
 }
 
-export default HostVansDetail
