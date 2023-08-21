@@ -119,3 +119,5 @@ Thumbs.db
 !.phpcs.xml.dist
 
 .session/
+
+Practice/exercise.txt
